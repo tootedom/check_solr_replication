@@ -56,11 +56,11 @@ The nagios check has the following options
 
 The three checks are:
 
-## Index Age Check
+## Index Age Check (-A)
 
--A  : Check age of the index on the given host, to the time on the local server (where the script is running).  Note it checks the indexVersion
-      timestamp, to the current time on the server which is running the script.  Therefore if you specify -s value that isn't the current localhost,
-      then you could be affected by timescew (NTP). The -c and -w are the number of seconds old the index can be.
+Check age of the index on the given host, to the time on the local server (where the script is running).  Note it checks the indexVersion
+timestamp, to the current time on the server which is running the script.  Therefore if you specify -s value that isn't the current localhost,
+then you could be affected by timescew (NTP). The -c and -w are the number of seconds old the index can be.
 
 ### Example
 
@@ -82,10 +82,10 @@ OK: Index Age Check.| { "status": "OK", "critical_cores": [], "warning_cores": [
 
 ```
 
-## Slave replication version Check
+## Slave replication version Check (-R)
 
--R  : Calls the slave's replication details endpoint. And obtains the "indexVersion" of the slave and master, and compares these two values against
-      each other.  The -c and -w are the number of seconds difference there can be between the master and slave index
+Calls the slave's replication details endpoint. And obtains the "indexVersion" of the slave and master, and compares these two values against
+each other.  The -c and -w are the number of seconds difference there can be between the master and slave index
 
 ### Example
 Check that the replication on this slave node, is less than 5 mins (300seconds) behind the index on the master or issue a warning.
@@ -108,8 +108,9 @@ OK: Index Replication Version Age Check.| { "status": "OK", "critical_cores": []
 
 ```
 
-## Ping Check
--P  : Just calls the ping endpoint on the solr admin, to check the core is available
+## Ping Check  (-P)
+
+Just calls the ping endpoint on the solr admin, to check the core is available
 
 
 ### Example

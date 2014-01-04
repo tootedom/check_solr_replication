@@ -39,7 +39,7 @@ Options:
                         The comma separated list of solr cores to be checked
   -t TIMEOUT, --timeout=TIMEOUT
                         The timeout for the request to solr
-  -d, --disabled        The monitoring check is disabled
+  -d, --disabled        The monitoring check is disabled, just return ok status
 
 The three checks are:
 

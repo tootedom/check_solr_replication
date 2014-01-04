@@ -47,6 +47,9 @@ The nagios check has the following options
 
 -t TIMEOUT, --timeout=TIMEOUT
                         The timeout for the request to solr
+
+-d, --disabled        The monitoring check is disabled
+
 ```
 
 # Available Checks
@@ -119,12 +122,20 @@ Check that core1, and core2 are available on the current node
 ### Example Output
 
 ```
-CRITICAL: Error pinging cores(s)| { "status": "CRITICAL", "critical_cores": ["core1"], "warning_cores": [], "ok_cores": [],"num_cores_checked" : "1" , "num_ok_cores" : "0", "details": [ {"core":"core1","age(s)":"-1", "msg":"exception calling http://localhost:8093/solr/core1/admin/ping?wt=json"} ] }
+CRITICAL: Error pinging cores(s)| { "status": "CRITICAL", "critical_cores": ["core1"], "warning_cores": [], "ok_cores": [],"num_cores_checked" : "1" , "num_ok_cores" : "0", "details": [ {"core":"core1","age(s)":"-1", "msg":"exception calling http://localhost:80/solr/core1/admin/ping?wt=json"} ] }
 
 OK. Tested core(s) | { "status": "OK", "critical_cores": [], "warning_cores": [], "ok_cores": ["core1"],"num_cores_checked" : "1" , "num_ok_cores" : "1", "details": [ {"core":"core1","age(s)":"-1"} ] }
 
 ```
 
+## Disable
+
+You can run the plugin with the -d parameter, and this will just stop the plugin from running any checks.  It will
+just output success:
+
+```
+OK: plugin is disabled, doing nothing | { "status":"ok" }
+```
 
 ## Json Data
 

@@ -68,7 +68,7 @@ Check that on the master that index has been updated in the last 60 seconds or a
 index is over 5 mins old (no indexing in past 5 mins):
 
 ```
-./solr-replication.py -i core1,core2 -A -H localhost -p 8080 -u solr -w 60 -c 300
+./check_solr_index_version_age.py -i core1,core2 -A -H localhost -p 8080 -u solr -w 60 -c 300
 ```
 
 ### Example Output
@@ -92,7 +92,7 @@ Check that the replication on this slave node, is less than 5 mins (300seconds) 
 Or if more than 10 mins behind issue a critical alert. (/replication?command=details&wt=json)
 
 ```
-./solr-replication.py -i core1,core2 -R -H localhost -p 8080 -u solr -w 300 -c 600
+./check_solr_index_version_age.py -i core1,core2 -R -H localhost -p 8080 -u solr -w 300 -c 600
 ```
 
 ### Example Output
@@ -116,7 +116,7 @@ OK: Index Replication Version Age Check.| { "status": "OK", "critical_cores": []
 Check that core1, and core2 are available on the current node
 
 ```
-./solr-replication.py -i core1,core2 -P -H localhost -p 8080 -u solr
+./check_solr_index_version_age.py -i core1,core2 -P -H localhost -p 8080 -u solr
 ```
 
 ### Example Output
@@ -142,7 +142,7 @@ OK: plugin is disabled, doing nothing | { "status":"ok" }
 The -R, -A and -P return data (delimited by |) that is json data.  That will provide more information on why a core may have failed:
 
 ```
-solr-replication.py' -i core1 -R -H localhost -p 8080 -u solr -w 10 -c 300 -t 5 | cut -d'|' -f2 | python -mjson.tool
+check_solr_index_version_age.py' -i core1 -R -H localhost -p 8080 -u solr -w 10 -c 300 -t 5 | cut -d'|' -f2 | python -mjson.tool
 ```
 
 Sample Output:
